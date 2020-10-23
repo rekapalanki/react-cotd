@@ -3,5 +3,6 @@ import { render } from 'react-dom';
 import './css/style.css';
 import StorePicker from './components/StorePicker';
 import App from './components/App';
+import Router from './components/Router';
 
-render(<App />, document.getElementById('main'));
+render(<Router />, document.getElementById('main'));
