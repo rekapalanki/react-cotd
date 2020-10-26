@@ -18,8 +18,13 @@ class AddFishForm extends React.Component {
       desc: this.descRef.current.value,
       image: this.imageRef.current.value,
     }
-    console.log(fish);
+    // 3. Passing in our fish object above to state with the addFish() method
+    // from the App component where state lives.
+    this.props.addFish(fish);
+    // 4. Refresh the AddFishForm with a reset() method
+    event.currentTarget.reset();
   }
+
   render() {
     return (
       <form className="fish-edit" onSubmit={this.createFish}>
