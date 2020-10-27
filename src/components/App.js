@@ -26,6 +26,19 @@ class App extends React.Component {
     this.setState({ fishes: sampleFishes });
   }
 
+  addToOrder = key => {
+    // 0. addToOrder(key) custom method takes in a key argument.
+    // Since this method needs to be accessed via Fish component,
+    // key props is declared and passed down via props as the object key
+    // in the JSX element in render. 
+    // 1. Take a copy of state
+    const order = { ...this.state.order };
+    // 2. Either add it to order or increment quantity
+    order[key] = order[key] + 1 || 1;
+    // 3. Call setState to update our state object
+    this.setState({ order });
+  }
+
   render() {
     return(
       <div className="catch-of-the-day">
@@ -33,7 +46,12 @@ class App extends React.Component {
           <Header tagline="Fresh Seafood Market" age={1100} />
           <ul className="fishes">
             {Object.keys(this.state.fishes).map(key =>
-              <Fish key={key} details={this.state.fishes[key]} />
+              <Fish
+                key={key}
+                index={key}
+                details={this.state.fishes[key]}
+                addToOrder={this.addToOrder}
+              />
             )}
           </ul>
         </div>
