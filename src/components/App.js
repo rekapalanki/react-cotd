@@ -30,7 +30,7 @@ class App extends React.Component {
     // 0. addToOrder(key) custom method takes in a key argument.
     // Since this method needs to be accessed via Fish component,
     // key props is declared and passed down via props as the object key
-    // in the JSX element in render. 
+    // in the JSX element in render.
     // 1. Take a copy of state
     const order = { ...this.state.order };
     // 2. Either add it to order or increment quantity
@@ -55,7 +55,7 @@ class App extends React.Component {
             )}
           </ul>
         </div>
-        <Order />
+        <Order fishes={this.state.fishes} order={this.state.order} />
         <Inventory
           addFish={this.addFish}
           loadSampleFishes={this.loadSampleFishes}
