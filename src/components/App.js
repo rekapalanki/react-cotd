@@ -1,32 +1,32 @@
-import React from 'react';
-import Header from './Header';
-import Order from './Order';
-import Inventory from './Inventory';
-import sampleFishes from '../sample-fishes';
-import Fish from './Fish';
-import base from '../base';
+import React from "react";
+import Header from "./Header";
+import Order from "./Order";
+import Inventory from "./Inventory";
+import sampleFishes from "../sample-fishes";
+import Fish from "./Fish";
+import base from "../base";
 
 class App extends React.Component {
   state = {
     fishes: {},
-    order: {}
+    order: {},
   };
 
   componentDidMount() {
     const { params } = this.props.match;
     // 1. reinstate our localStorage
     const localStorageRef = localStorage.getItem(params.storeId);
-    if(localStorageRef) {
+    if (localStorageRef) {
       this.setState({ order: JSON.parse(localStorageRef) });
     }
     this.ref = base.syncState(`${params.storeID}/fishes`, {
       context: this,
-      state: "fishes"
+      state: "fishes",
     });
   }
 
   componentDidUpdate() {
-    console.log(this.state.order)
+    console.log(this.state.order);
     localStorage.setItem(
       this.props.match.params.storeId,
       JSON.stringify(this.state.order)
@@ -37,8 +37,7 @@ class App extends React.Component {
     base.removeBinding(this.ref);
   }
 
-
-  addFish = fish => {
+  addFish = (fish) => {
     // 1. Take a copy of the existing state for immutation purposes
     const fishes = { ...this.state.fishes };
     // 2. Add our new fish to the fishes variable.
@@ -49,11 +48,23 @@ class App extends React.Component {
     // in ES6 we can just pass the word just once.
   };
 
+  // Update fish data from EditFishForm
+  // Params: key: which fish is going to be updated?
+  // updatedFish: const from the EditFishForm handleChange event handler
+  updateFish = (key, updatedFish) => {
+    // 1. Take a copy of the current state
+    const fishes = { ...this.state.fishes };
+    // 2. update that state
+    fishes[key] = updatedFish;
+    // 3. Set that to state
+    this.setState({ fishes });
+  };
+
   loadSampleFishes = () => {
     this.setState({ fishes: sampleFishes });
-  }
+  };
 
-  addToOrder = key => {
+  addToOrder = (key) => {
     // 0. addToOrder(key) custom method takes in a key argument.
     // Since this method needs to be accessed via Fish component,
     // key props is declared and passed down via props as the object key
@@ -64,32 +75,34 @@ class App extends React.Component {
     order[key] = order[key] + 1 || 1;
     // 3. Call setState to update our state object
     this.setState({ order });
-  }
+  };
 
   render() {
-    return(
+    return (
       <div className="catch-of-the-day">
         <div className="menu">
           <Header tagline="Fresh Seafood Market" age={1100} />
           <ul className="fishes">
-            {Object.keys(this.state.fishes).map(key =>
+            {Object.keys(this.state.fishes).map((key) => (
               <Fish
                 key={key}
                 index={key}
                 details={this.state.fishes[key]}
                 addToOrder={this.addToOrder}
               />
-            )}
+            ))}
           </ul>
         </div>
         <Order fishes={this.state.fishes} order={this.state.order} />
         <Inventory
           addFish={this.addFish}
+          updateFish={this.updateFish}
           loadSampleFishes={this.loadSampleFishes}
+          fishes={this.state.fishes}
         />
       </div>
     );
-  };
-};
+  }
+}
 
 export default App;
