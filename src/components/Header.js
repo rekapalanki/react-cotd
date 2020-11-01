@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const Header = ({tagline, age}) => (
+const Header = ({ tagline, age }) => (
   <header className="top">
     <h1>
       Catch
@@ -11,10 +11,12 @@ const Header = ({tagline, age}) => (
       Day
     </h1>
     <h3 className="tagline">
-      <span>{tagline} {age}</span>
+      <span>
+        {tagline} {age}
+      </span>
     </h3>
   </header>
-)
+);
 
 /* Header extends React.Component {
   render() {

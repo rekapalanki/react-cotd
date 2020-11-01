@@ -1,10 +1,10 @@
-import React from 'react';
-import { getFunName } from '../helpers.js'
+import React from "react";
+import { getFunName } from "../helpers.js";
 
 class StorePicker extends React.Component {
   myInput = React.createRef();
 
-  goToStore = event => {
+  goToStore = (event) => {
     // 1. Stop the form from submitting
     event.preventDefault();
     // 2. Get the text from that input
@@ -15,8 +15,8 @@ class StorePicker extends React.Component {
     //  method we want to access.
     // This results to faster loading because we're not reloading the page,
     // just tell Router to load another component instead of StorePicker.
-    this.props.history.push(`/store/${storeName}`)
-  }
+    this.props.history.push(`/store/${storeName}`);
+  };
 
   render() {
     return (
@@ -31,7 +31,7 @@ class StorePicker extends React.Component {
         />
         <button type="submit">Visit Store ➜</button>
       </form>
-    )
+    );
   }
 }
 

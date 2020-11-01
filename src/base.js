@@ -5,7 +5,7 @@ const firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyCIBNzethEKeXWqKW5XfC4XP__RCHz8Y2M",
   authDomain: "catch-of-the-day-df2e3.firebaseapp.com",
   databaseURL: "https://catch-of-the-day-df2e3.firebaseio.com",
-})
+});
 
 const base = Rebase.createClass(firebaseApp.database());
 

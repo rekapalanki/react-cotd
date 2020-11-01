@@ -48,10 +48,11 @@ class App extends React.Component {
     // in ES6 we can just pass the word just once.
   };
 
-  // Update fish data from EditFishForm
-  // Params: key: which fish is going to be updated?
-  // updatedFish: const from the EditFishForm handleChange event handler
+
   updateFish = (key, updatedFish) => {
+    // Update fish data from EditFishForm
+    // Params: key: which fish is going to be updated?
+    // updatedFish: const from the EditFishForm handleChange event handler
     // 1. Take a copy of the current state
     const fishes = { ...this.state.fishes };
     // 2. update that state

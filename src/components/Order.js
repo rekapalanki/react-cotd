@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import { formatPrice } from "../helpers";
 
 class Order extends React.Component {
-  renderOrder = key => {
+  renderOrder = (key) => {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
     // Check if fish is available. Otherwise status will not update
@@ -10,30 +10,32 @@ class Order extends React.Component {
     const isAvailable = fish && fish.status === "available";
     // Make sure the fish is loaded accordingly.
     if (!fish) return null;
-    if(!isAvailable) {
-      return <li key={key}>
+    if (!isAvailable) {
+      return (
+        <li key={key}>
           Sorry, {fish ? fish.name : "fish"} is no longer available.
-      </li>
+        </li>
+      );
     }
-    return <li key={key}>
-      {count} lbs {fish.name}
-      {formatPrice(count * fish.price)}
-    </li>
-  }
+    return (
+      <li key={key}>
+        {count} lbs {fish.name}
+        {formatPrice(count * fish.price)}
+      </li>
+    );
+  };
 
   render() {
-
     const orderIds = Object.keys(this.props.order);
     const total = orderIds.reduce((prevTotal, key) => {
       const fish = this.props.fishes[key];
       const count = this.props.order[key];
       const isAvailable = fish && fish.status === "available";
-      if(isAvailable) {
-        return prevTotal + (count * fish.price);
+      if (isAvailable) {
+        return prevTotal + count * fish.price;
       }
       return prevTotal;
     }, 0);
-
 
     return (
       <div className="order-wrap">
@@ -44,7 +46,7 @@ class Order extends React.Component {
           <strong>{formatPrice(total)}</strong>
         </div>
       </div>
-    )
+    );
   }
 }
 

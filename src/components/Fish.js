@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { formatPrice } from "../helpers";
 
 class Fish extends React.Component {
@@ -23,7 +23,7 @@ class Fish extends React.Component {
           {isAvailable ? "Add To Order" : "Sold Out!"}
         </button>
       </li>
-    )
+    );
   }
 }
 
