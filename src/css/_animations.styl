@@ -5,39 +5,17 @@
   appear Must set transitionAppear={true} on animation component
 */
 
+// Language used is stylus. It is applied in our package.json
+// file along with other development packages.
+// If we are using preprocessors like SASS or stylus, in order to
+// follow changes during live development we have to run in
+// the terminal: Ctrl+C (exit npm) and: npm run watch.
+// If this file is updated then style.css will be changed accorrdingly
+
 .order-enter
+  background red
   transform: translateX(-120%)
-  transition 0.5s
-  max-height: 0
-  padding 0 !important
+  transition 5s
   &.order-enter-active
-    max-height 60px
+    background yellow
     transform: translateX(0)
-    padding 2rem 0 !important
-
-.order-exit
-  transition 0.5s
-  transform: translateX(0)
-  &.order-exit-active
-    transform: translateX(120%)
-    padding: 0
-
-
-.count-enter
-  background: red
-  transition .5s
-  transform translateY(100%)
-  &.count-enter-active
-    background: yellow
-    transform translateY(0)
-
-.count-exit
-  background: black
-  transform translateY(0)
-  transition .5s
-  position absolute
-  left 0
-  bottom 0
-  &.count-exit-active
-    background green
-    transform translateY(-100%) scale(3)
