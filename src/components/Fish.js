@@ -1,7 +1,21 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { formatPrice } from "../helpers";
 
 class Fish extends React.Component {
+  // we declare ONE propType for all of the fish components. This will
+  // result in a reusable code
+  static propTypes = {
+    details: PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      desc: PropTypes.string,
+      status: PropTypes.string,
+      price: PropTypes.number,
+    }),
+    addToOrder: PropTypes.func,
+  };
+
   // addToOrder custom method needs to be accessed inside of this component
   // as an onClick event handler
   handleClick = () => {

@@ -1,9 +1,16 @@
 import React from "react";
-import { formatPrice } from "../helpers";
+import PropTypes from "prop-types";
 import Fish from "./Fish";
+import { formatPrice } from "../helpers";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class Order extends React.Component {
+  static propTypes = {
+    fishes: PropTypes.object,
+    order: PropTypes.object,
+    removeFromOrder: PropTypes.func,
+  };
+
   renderOrder = (key) => {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
@@ -16,8 +23,8 @@ class Order extends React.Component {
     const transitionOptions = {
       classNames: "order",
       key,
-      timeout: { enter: 500, exit: 500 }
-    }
+      timeout: { enter: 500, exit: 500 },
+    };
     // Check if fish is available. Otherwise status will not update
     // in the componentDidMount() lifecycle event
     const isAvailable = fish && fish.status === "available";
@@ -33,7 +40,7 @@ class Order extends React.Component {
       );
     }
     return (
-      <CSSTransition  {...transitionOptions}>
+      <CSSTransition {...transitionOptions}>
         <li key={key}>
           <span>
             <TransitionGroup component="span" className="count">

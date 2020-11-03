@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Header from "./Header";
 import Order from "./Order";
 import Inventory from "./Inventory";
@@ -10,6 +11,10 @@ class App extends React.Component {
   state = {
     fishes: {},
     order: {},
+  };
+
+  static propTypes = {
+    match: PropTypes.object
   };
 
   componentDidMount() {
@@ -86,7 +91,7 @@ class App extends React.Component {
     this.setState({ order });
   };
 
-  removeFromOrder = key => {
+  removeFromOrder = (key) => {
     // 1. Take a copy of state
     const order = { ...this.state.order };
     // 2. update the state - remove an item
@@ -94,7 +99,7 @@ class App extends React.Component {
     delete order[key];
     // 3. update state
     this.setState({ order });
-  }
+  };
 
   render() {
     return (
