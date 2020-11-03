@@ -7,6 +7,17 @@ class Order extends React.Component {
   renderOrder = (key) => {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
+    // To write reusable code within the CSSTransition,
+    // instead of having props inside of our XML tag,
+    // we converted it into object properties.
+    // The timeout property's value is an object literal.
+    // Then we spread the object into the CSSTransition tag, see below:
+    // <CSSTransition  {...transitionOptions}>
+    const transitionOptions = {
+      classNames: "order",
+      key,
+      timeout: { enter: 500, exit: 500 }
+    }
     // Check if fish is available. Otherwise status will not update
     // in the componentDidMount() lifecycle event
     const isAvailable = fish && fish.status === "available";
@@ -14,11 +25,7 @@ class Order extends React.Component {
     if (!fish) return null;
     if (!isAvailable) {
       return (
-        <CSSTransition
-          classNames="order"
-          key={key}
-          timeout={{ enter: 500, exit: 500 }}
-        >
+        <CSSTransition {...transitionOptions}>
           <li key={key}>
             Sorry, {fish ? fish.name : "fish"} is no longer available.
           </li>
@@ -26,11 +33,7 @@ class Order extends React.Component {
       );
     }
     return (
-      <CSSTransition
-        classNames="order"
-        key={key}
-        timeout={{ enter: 500, exit: 500 }}
-      >
+      <CSSTransition  {...transitionOptions}>
         <li key={key}>
           <span>
             <TransitionGroup component="span" className="count">
