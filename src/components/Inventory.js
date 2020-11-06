@@ -4,7 +4,8 @@ import firebase from "firebase";
 import AddFishForm from "./AddFishForm";
 import EditFishForm from "./EditFishForm";
 import Login from "./Login";
-import { firebaseApp } from "../base";
+// importing a default and a named export
+import base, { firebaseApp } from "../base";
 
 class Inventory extends React.Component {
   static propTypes = {
@@ -16,7 +17,19 @@ class Inventory extends React.Component {
   };
 
   authHandler = async (authData) => {
-    console.log(authData);
+    // 1. Look up the current store in the firebase database
+    // The fetch() method returns a promise. If we want to return the store
+    // and not the promise, we have to put an await in front of it.
+    const store = await base.fetch(this.props.storeId, { context: this });
+    console.log(store)
+    // 2. Claim it if ther is no owner ie. if we are the first owner
+    if (!store.owner) {
+      // save it as our own
+      await base.post(`${this.props.storeId}/owner`, {
+        data: authData.user.uid
+      });
+    }
+    // 3. Set the state of the inventory component to reflect the current user
   };
 
   // We created an authProvider const to dynamically handle which authProvider
