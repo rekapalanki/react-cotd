@@ -16,6 +16,14 @@ class Inventory extends React.Component {
     loadSampleFishes: PropTypes.func,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      uid: null,
+      owner: null
+    }
+  }
+
   authHandler = async (authData) => {
     // 1. Look up the current store in the firebase database
     // The fetch() method returns a promise. If we want to return the store
@@ -30,6 +38,10 @@ class Inventory extends React.Component {
       });
     }
     // 3. Set the state of the inventory component to reflect the current user
+    this.setState({
+      uid: authData.user.uid,
+      owner: store.owner || authData.user.uid
+    })
   };
 
   // We created an authProvider const to dynamically handle which authProvider
