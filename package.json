@@ -70,9 +70,11 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "dev": "node scripts/start.js",
-    "start": "node scripts/start.js",
-    "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
+    "dev": "react-scripts start",
+    "start": "serve --single ./build",
+    "watch":
+      "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\"
+      \"npm run styles:watch\"",
     "build": "node scripts/build.js",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
     "now-build": "npm run build && mv build dist",
