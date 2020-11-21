@@ -13,8 +13,6 @@
       "dest": "/service-worker.js"
     },
     { "src": "^/precache-manifest.(.*)", "dest": "/precache-manifest.$1" },
-    { "src": "^/(.*)", "dest": "/index.html" },
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+    { "src": "^/(.*)", "dest": "/index.html" }
   ]
 }
