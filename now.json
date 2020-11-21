@@ -14,5 +14,7 @@
     },
     { "src": "^/precache-manifest.(.*)", "dest": "/precache-manifest.$1" },
     { "src": "^/(.*)", "dest": "/index.html" }
-  ]
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
 }
