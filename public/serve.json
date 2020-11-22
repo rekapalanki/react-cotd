@@ -1,3 +1,3 @@
 await handler(request, response, {
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
-});
+}); 
