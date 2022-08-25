@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-cotd/static/css/main.b4a895fb.chunk.css",
+    "main.js": "/react-cotd/static/js/main.41f60713.chunk.js",
+    "main.js.map": "/react-cotd/static/js/main.41f60713.chunk.js.map",
+    "runtime-main.js": "/react-cotd/static/js/runtime-main.5dcdd2d2.js",
+    "runtime-main.js.map": "/react-cotd/static/js/runtime-main.5dcdd2d2.js.map",
+    "static/js/2.9f966f46.chunk.js": "/react-cotd/static/js/2.9f966f46.chunk.js",
+    "static/js/2.9f966f46.chunk.js.map": "/react-cotd/static/js/2.9f966f46.chunk.js.map",
+    "index.html": "/react-cotd/index.html",
+    "precache-manifest.9bee7e67e773e02a493df92ad95ae627.js": "/react-cotd/precache-manifest.9bee7e67e773e02a493df92ad95ae627.js",
+    "service-worker.js": "/react-cotd/service-worker.js",
+    "static/css/main.b4a895fb.chunk.css.map": "/react-cotd/static/css/main.b4a895fb.chunk.css.map",
+    "static/js/2.9f966f46.chunk.js.LICENSE.txt": "/react-cotd/static/js/2.9f966f46.chunk.js.LICENSE.txt",
+    "static/media/style.css": "/react-cotd/static/media/haymaker-webfont.e9535f20.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5dcdd2d2.js",
+    "static/js/2.9f966f46.chunk.js",
+    "static/css/main.b4a895fb.chunk.css",
+    "static/js/main.41f60713.chunk.js"
+  ]
+}
